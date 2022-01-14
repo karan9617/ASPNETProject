@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "TeN4UpfGhn+aFLwKFH0Sa9YAbdFULvogNIGB/VHKmqPVye8fBOhp1FtBjpxTqp6LAgyHNCKq5lfIivFviMtFlQ==",
+  "success": true,
+  "projectFilePath": "/Users/karanvishwakarma/Projects/ASPProject4/ASPProject4/ASPProject4.csproj",
+  "expectedPackageFiles": [
+    "/Users/karanvishwakarma/.nuget/packages/exceldatareader/3.6.0/exceldatareader.3.6.0.nupkg.sha512",
+    "/Users/karanvishwakarma/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/Users/karanvishwakarma/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
+    "/Users/karanvishwakarma/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/Users/karanvishwakarma/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.22/microsoft.netcore.app.host.osx-x64.3.1.22.nupkg.sha512"
+  ],
+  "logs": []
+}

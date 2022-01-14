@@ -1,0 +1,53 @@
+﻿@using ASPProject4.Models
+@model IEnumerable<UserModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h2>Basic File Upload</h2>
+@using (Html.BeginForm("Index",
+                    "Home",
+                    FormMethod.Post,
+                    new { @enctype = "multipart/form-data" }))
+{
+    <label for="file">Upload Image:</label>
+    <input type="file" name="file" id="file" />
+    <input type="file" name="file1" id="file1" />
+    <br>
+    <br>
+
+    <input type="submit" value="Upload Image" />
+
+    <br>
+    <br>
+
+}
+
+@if (Model.Count() > 0)
+{
+    <hr />
+    <table cellpadding="0" cellspacing="0" border="1">
+        <tr>
+        
+            
+
+            </tr>
+        @foreach (UserModel user in Model)
+        {
+    <tr>
+        <td>@user.FirmName</td>
+        @foreach (string ss in @user.companytable)
+        {
+            <td>@ss</td>
+        }
+
+    </tr>
+        }
+    </table>
+}
