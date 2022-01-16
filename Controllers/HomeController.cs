@@ -73,7 +73,7 @@ namespace ASPProject4.Controllers
                     {
                         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                         {
-                            
+                          
                         }
                     }
                 }
@@ -140,7 +140,7 @@ namespace ASPProject4.Controllers
                             }
                             users.Add(new UserModel
                             {
-                                FirmName = "Firm Name",
+                                FirmName = " ",
                                 companytable = s11,
             
                             });
@@ -156,7 +156,7 @@ namespace ASPProject4.Controllers
                             {
                                 if (((List<string>)assetsTable[(string)de.Key]).Contains(id))
                                 {
-                                    newListForCompany.Add((string)de.Key);
+                                    newListForCompany.Add("X");
                                 }
                                 else
                                 {
