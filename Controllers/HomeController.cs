@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,6 +14,8 @@ using DisplayDataExample.Code;
 using System.Text;
 using ExcelDataReader;
 using System.Collections;
+using System.Globalization;
+using CsvHelper;
 
 namespace DisplayDataExample.Code
 {
@@ -56,10 +58,31 @@ namespace ASPProject4.Controllers
         [HttpPost]
         public IActionResult Index(IFormFile file, IFormFile file1)
         {
-            
+            if(file == null || file1 == null)
+            {
+                return View(new List<UserModel>());
+            }
+           if(file.ContentType == "text/csv")
+            {
+
+              
+                using(var stream = file1.OpenReadStream())
+                {
+                 
+                    using (var reader = new StreamReader(file.OpenReadStream()))
+                    {
+                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                        {
+                            
+                        }
+                    }
+                }
+
+                return View(new List<UserModel>());
+            }
             List<UserModel> users = new List<UserModel>();
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
-            HashSet<string> set = new HashSet<string>();
+            List<string> set = new List<string>();
 
             Hashtable assetsTable = new Hashtable();
             int j1 = 0;
@@ -97,12 +120,7 @@ namespace ASPProject4.Controllers
                 }
             }
             int i = 0,j2 = 0;
-            List<string> s1 = new List<string>();
-         
-            foreach(string ss in set)
-            {
-               s1.Add(ss);
-            }
+            
             using (var stream = file.OpenReadStream())
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
@@ -111,10 +129,19 @@ namespace ASPProject4.Controllers
                     {
                         if (j2 == 0)
                         {
+                            List<string> s11 = new List<string>();
+                            foreach (DictionaryEntry de in assetsTable)
+                            {
+                                
+                                
+                                    s11.Add((string)de.Key);
+                                
+                                
+                            }
                             users.Add(new UserModel
                             {
                                 FirmName = "Firm Name",
-                                companytable = s1,
+                                companytable = s11,
             
                             });
                             j2++;
@@ -127,15 +154,16 @@ namespace ASPProject4.Controllers
                             List<string> newListForCompany = new List<string>();
                             foreach (DictionaryEntry de in assetsTable)
                             {
-                                if (((List<string>)assetsTable[de.Key]).Contains(id))
+                                if (((List<string>)assetsTable[(string)de.Key]).Contains(id))
                                 {
-                                    newListForCompany.Add(id);
+                                    newListForCompany.Add((string)de.Key);
                                 }
                                 else
                                 {
-                                    newListForCompany.Add("S");
+                                    newListForCompany.Add(" ");
                                 }
                             }
+                            //here
                             users.Add(new UserModel
                             {
                                 FirmName = name,
@@ -162,3 +190,4 @@ namespace ASPProject4.Controllers
         }
     }
 }
+
